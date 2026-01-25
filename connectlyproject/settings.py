@@ -52,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'connectlyprojectsub.urls'
+ROOT_URLCONF = 'connectlyproject.urls'
 
 
 TEMPLATES = [
@@ -70,7 +70,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'connectlyprojectsub.wsgi.application'
+WSGI_APPLICATION = 'connectlyproject.wsgi.application'
 
 
 # Database
