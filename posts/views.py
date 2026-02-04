@@ -1,3 +1,7 @@
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from .permissions import IsPostAuthor, IsCommentAuthor
+
 from rest_framework import status
 from rest_framework.generics import ListCreateAPIView
 from rest_framework.response import Response
@@ -14,6 +18,8 @@ class UserListCreateView(ListCreateAPIView):
     """
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class PostListCreateView(ListCreateAPIView):
@@ -25,6 +31,8 @@ class PostListCreateView(ListCreateAPIView):
     """
     queryset = Post.objects.select_related('author').prefetch_related('comments').all()
     serializer_class = PostSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
 
 class CommentListCreateView(ListCreateAPIView):
@@ -36,4 +44,5 @@ class CommentListCreateView(ListCreateAPIView):
     """
     queryset = Comment.objects.select_related('author', 'post').all()
     serializer_class = CommentSerializer
-
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
