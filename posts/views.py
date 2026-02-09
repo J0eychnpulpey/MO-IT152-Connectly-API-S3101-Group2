@@ -1,41 +1,72 @@
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
-from .models import User, Post
-import json
+from rest_framework.views import APIView
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
+from rest_framework.generics import ListCreateAPIView
+from rest_framework.response import Response
 
-def get_users(request):
-    try:
-        users = list(User.objects.values('id', 'username', 'email', 'created_at'))
-        return JsonResponse(users, safe=False)
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=500)
+from .models import User, Post, Comment
+from .serializers import UserSerializer, PostSerializer, CommentSerializer
+from .permissions import IsPostAuthor, IsCommentAuthor
 
-@csrf_exempt
-def create_user(request):
-    if request.method == 'POST':
+from factories.postfactory import PostFactory
+from singletons.loggersingleton import LoggerSingleton
+
+# initialize the logger singleton
+logger = LoggerSingleton().get_logger()
+
+class UserListCreateView(ListCreateAPIView):
+    """
+    API endpoint for listing all users or creating a new user.
+    """
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+
+class PostListCreateView(APIView):
+    """
+    API endpoint for listing all posts or creating a new post using the Factory pattern.
+    """
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        posts = Post.objects.all()
+        serializer = PostSerializer(posts, many=True)
+        return Response(serializer.data)
+
+    def post(self, request):
+        data = request.data
+        author_id = data.get('author')
+        
         try:
-            data = json.loads(request.body)
-            user = User.objects.create(username=data['username'], email=data['email'])
-            return JsonResponse({'id': user.id, 'message': 'User created successfully'}, status=201)
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=400)
-
-def get_posts(request):
-    try:
-        posts = list(Post.objects.values('id', 'content', 'author', 'created_at'))
-        return JsonResponse(posts, safe=False)
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=500)
-
-@csrf_exempt
-def create_post(request):
-    if request.method == 'POST':
-        try:
-            data = json.loads(request.body)
-            author = User.objects.get(id=data['author'])
-            post = Post.objects.create(content=data['content'], author=author)
-            return JsonResponse({'id': post.id, 'message': 'Post created successfully'}, status=201)
+            author = User.objects.get(id=author_id)
+            # use the factory to create the post
+            post = PostFactory.create_post(
+                post_type=data.get('post_type', 'text'),
+                title=data.get('title', 'Untitled'),
+                content=data.get('content', ''),
+                author=author,
+                metadata=data.get('metadata')
+            )
+            logger.info(f"Post created successfully: {post.id}")
+            return Response({"message": "Post created successfully!", "id": post.id}, status=status.HTTP_201_CREATED)
+        
         except User.DoesNotExist:
-            return JsonResponse({'error': 'Author not found'}, status=404)
-        except Exception as e:
-            return JsonResponse({'error': str(e)}, status=400)
+            logger.error(f"User with id {author_id} not found")
+            return Response({"error": "Author not found"}, status=status.HTTP_404_NOT_FOUND)
+        except ValueError as e:
+            logger.warning(f"Validation error: {str(e)}")
+            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+
+
+class CommentListCreateView(ListCreateAPIView):
+    """
+    API endpoint for listing all comments or creating a new comment.
+    """
+    queryset = Comment.objects.select_related('author', 'post').all()
+    serializer_class = CommentSerializer
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
