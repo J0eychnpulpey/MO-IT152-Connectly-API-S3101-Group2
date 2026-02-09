@@ -1,0 +1,218 @@
+{
+  "info": {
+    "_postman_id": "aea4afe4-11a9-4a33-8f76-c6b4d454cc6b",
+    "name": "Activity 12 - Design Patterns",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51482408",
+    "_collection_link": "https://go.postman.co/collection/51482408-aea4afe4-11a9-4a33-8f76-c6b4d454cc6b?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "valid image post",
+      "request": {
+        "auth": {
+          "type": "apikey",
+          "apikey": [
+            {
+              "key": "value",
+              "value": "Token e3e11ee2b60ffcbb8d6f92c14164acace4511bf8",
+              "type": "string"
+            },
+            {
+              "key": "key",
+              "value": "Authorization",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"author\": 1,\r\n    \"title\": \"factory test post\",\r\n    \"content\": \"testing the factory pattern with metadata\",\r\n    \"post_type\": \"image\",\r\n    \"metadata\": {\r\n        \"file_size\": 5000\r\n    }\r\n}\r\n",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://127.0.0.1:8000/posts/posts/",
+          "protocol": "http",
+          "host": [
+            "127",
+            "0",
+            "0",
+            "1"
+          ],
+          "port": "8000",
+          "path": [
+            "posts",
+            "posts",
+            ""
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "valid image post",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"author\": 1,\r\n    \"title\": \"factory test post\",\r\n    \"content\": \"testing the factory pattern with metadata\",\r\n    \"post_type\": \"image\",\r\n    \"metadata\": {\r\n        \"file_size\": 5000\r\n    }\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/posts/posts/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "posts",
+                "posts",
+                ""
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Mon, 09 Feb 2026 04:13:46 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.14.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "208"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": 7,\n    \"title\": \"factory test post\",\n    \"content\": \"testing the factory pattern with metadata\",\n    \"post_type\": \"image\",\n    \"metadata\": {\n        \"file_size\": 5000\n    },\n    \"author\": 1,\n    \"comments\": [],\n    \"created_at\": \"2026-02-09T04:13:46.761052Z\"\n}"
+        },
+        {
+          "name": "invalid image post",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"author\": 1,\r\n    \"title\": \"invalid image post\",\r\n    \"content\": \"this should not work\",\r\n    \"post_type\": \"image\",\r\n    \"metadata\": {}\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://127.0.0.1:8000/posts/posts/",
+              "protocol": "http",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "posts",
+                "posts",
+                ""
+              ]
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Date",
+              "value": "Mon, 09 Feb 2026 04:18:59 GMT"
+            },
+            {
+              "key": "Server",
+              "value": "WSGIServer/0.2 CPython/3.14.2"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "54"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"error\": \"Image posts require file_size in metadata.\"\n}"
+        }
+      ]
+    }
+  ]
+}
