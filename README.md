@@ -8,9 +8,6 @@ A Django REST Framework API for a social media platform. Built for MO-IT152 at M
 
 Connectly lets users create profiles, write posts, and leave comments. This is the Week 3 version where we switched to Class-Based Views and added proper validation through DRF serializers.
 
-## What We Built
+I enhanced the connectly api by implementing singleton and factory design patterns to centralize my configurations, unify system logging, and standardize how different post types are created and validated for better scalability by adding the singletons and factories folders.
 
-Three main models: Users, Posts, and Comments. Users can make posts, and anyone can comment on posts. Everything connects through foreign keys so posts link to their authors and comments link to both posts and users.
-
-The API validates everything automatically now. If you try to create a post without content or link to a user that doesn't exist, it returns proper error messages.
 
