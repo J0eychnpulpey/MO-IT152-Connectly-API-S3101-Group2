@@ -25,8 +25,8 @@ class PostSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Post
-        fields = ['id', 'content', 'author', 'created_at', 'is_published', 'comments']
-        read_only_fields = ['id', 'created_at', 'comments']
+        fields = ['id', 'title', 'content', 'post_type', 'metadata', 'author', 'comments', 'created_at']
+        read_only_fields = ['id', 'created_at']
     
     def get_comments(self, obj):
         """Return list of comment IDs for this post."""

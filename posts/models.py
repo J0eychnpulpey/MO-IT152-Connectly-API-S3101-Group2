@@ -10,10 +10,18 @@ class User(models.Model):
         return self.username
 
 class Post(models.Model):
+    POST_TYPES = [
+        ('text', 'Text'),
+        ('image', 'Image'),
+        ('video', 'Video'),
+    ]
+    
+    title = models.CharField(max_length=255, default="Untitled Post")
     content = models.TextField()
+    post_type = models.CharField(max_length=10, choices=POST_TYPES, default='text')
+    metadata = models.JSONField(null=True, blank=True)  # requires django 3.1+
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     created_at = models.DateTimeField(auto_now_add=True)
-    is_published = models.BooleanField(default=False)
 
     def __str__(self):
         return self.content[:50]

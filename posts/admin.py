@@ -10,9 +10,9 @@ class UserAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['id', 'content', 'author', 'is_published', 'created_at']
-    list_filter = ['is_published', 'created_at']
-    search_fields = ['content']
+    list_display = ['id', 'title', 'author', 'post_type', 'created_at']
+    list_filter = ['post_type', 'created_at']
+    search_fields = ['title', 'content']
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
