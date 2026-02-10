@@ -10,4 +10,4 @@ Connectly lets users create profiles, write posts, and leave comments. This is t
 
 I enhanced the connectly api by implementing singleton and factory design patterns to centralize my configurations, unify system logging, and standardize how different post types are created and validated for better scalability by adding the singletons and factories folders.
 
-
+This repository is created by John Paul A P. as individual contribution to the group project.
