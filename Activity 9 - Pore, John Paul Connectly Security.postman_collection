@@ -1,0 +1,418 @@
+{
+  "info": {
+    "_postman_id": "6f23f162-b7ba-4928-baf6-dca2c0e3d4b2",
+    "name": "Activity 9 - Connectly Security",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "51482408",
+    "_collection_link": "https://go.postman.co/collection/51482408-6f23f162-b7ba-4928-baf6-dca2c0e3d4b2?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "New Request",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": [
+        {
+          "name": "GET Users - Authenticated",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://127.0.0.1:8000/posts/users/",
+              "protocol": "https",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "posts",
+                "users",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.5 Python/3.14.2"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 04 Feb 2026 10:08:33 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "636"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"username\": \"week3_test01\",\n        \"email\": \"test01@example.com\",\n        \"created_at\": \"2026-01-25T07:09:30.446981Z\",\n        \"is_verified\": false\n    },\n    {\n        \"id\": 2,\n        \"username\": \"week3_test02\",\n        \"email\": \"test02@example.com\",\n        \"created_at\": \"2026-01-25T07:09:30.969288Z\",\n        \"is_verified\": false\n    },\n    {\n        \"id\": 3,\n        \"username\": \"paultest1\",\n        \"email\": \"paul@test1.edu.mlc.ph\",\n        \"created_at\": \"2026-01-25T07:22:08.033362Z\",\n        \"is_verified\": false\n    },\n    {\n        \"id\": 4,\n        \"username\": \"john_paul_test\",\n        \"email\": \"johnpaul@example.com\",\n        \"created_at\": \"2026-01-25T07:38:04.515760Z\",\n        \"is_verified\": false\n    },\n    {\n        \"id\": 5,\n        \"username\": \"test_review\",\n        \"email\": \"review@test.com\",\n        \"created_at\": \"2026-01-25T13:57:19.981731Z\",\n        \"is_verified\": false\n    }\n]"
+        },
+        {
+          "name": "GET Posts - Unauthorized",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://127.0.0.1:8000/posts/posts/",
+              "protocol": "https",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "posts",
+                "posts",
+                ""
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.5 Python/3.14.2"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 04 Feb 2026 10:10:57 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "WWW-Authenticate",
+              "value": "Token"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "58"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": \"Authentication credentials were not provided.\"\n}"
+        },
+        {
+          "name": "GET Posts - Authenticated",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://127.0.0.1:8000/posts/posts/",
+              "protocol": "https",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "posts",
+                "posts",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.5 Python/3.14.2"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 04 Feb 2026 10:12:55 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "547"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"content\": \"This is a test post for Week 3!\",\n        \"author\": 1,\n        \"created_at\": \"2026-01-25T07:09:31.442541Z\",\n        \"is_published\": false,\n        \"comments\": [\n            1,\n            2,\n            3,\n            4,\n            5\n        ]\n    },\n    {\n        \"id\": 2,\n        \"content\": \"This is a test post.\",\n        \"author\": 1,\n        \"created_at\": \"2026-01-25T09:12:59.240377Z\",\n        \"is_published\": false,\n        \"comments\": []\n    },\n    {\n        \"id\": 3,\n        \"content\": \"Testing classmate API\",\n        \"author\": 1,\n        \"created_at\": \"2026-01-25T13:57:22.653548Z\",\n        \"is_published\": false,\n        \"comments\": []\n    },\n    {\n        \"id\": 4,\n        \"content\": \"Testing classmate API\",\n        \"author\": 1,\n        \"created_at\": \"2026-01-25T14:08:52.785110Z\",\n        \"is_published\": false,\n        \"comments\": []\n    }\n]"
+        },
+        {
+          "name": "GET Comments - Authenticated",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://127.0.0.1:8000/posts/comments/",
+              "protocol": "https",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "posts",
+                "comments",
+                ""
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.5 Python/3.14.2"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 04 Feb 2026 10:15:20 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "520"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": 1,\n        \"text\": \"This is a comment! Hello from Week 3!\",\n        \"author\": 2,\n        \"post\": 1,\n        \"created_at\": \"2026-01-25T07:09:32.881799Z\"\n    },\n    {\n        \"id\": 2,\n        \"text\": \"Great post! DRF is awesome!\",\n        \"author\": 1,\n        \"post\": 1,\n        \"created_at\": \"2026-01-25T07:09:33.646915Z\"\n    },\n    {\n        \"id\": 3,\n        \"text\": \"This is a comment! Hello!\",\n        \"author\": 1,\n        \"post\": 1,\n        \"created_at\": \"2026-01-25T09:19:17.744778Z\"\n    },\n    {\n        \"id\": 4,\n        \"text\": \"Great API!\",\n        \"author\": 1,\n        \"post\": 1,\n        \"created_at\": \"2026-01-25T13:57:25.056601Z\"\n    },\n    {\n        \"id\": 5,\n        \"text\": \"Great API!\",\n        \"author\": 1,\n        \"post\": 1,\n        \"created_at\": \"2026-01-25T14:08:55.354036Z\"\n    }\n]"
+        },
+        {
+          "name": "GET Comments - Unauthorized",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "https://127.0.0.1:8000/posts/comments/",
+              "protocol": "https",
+              "host": [
+                "127",
+                "0",
+                "0",
+                "1"
+              ],
+              "port": "8000",
+              "path": [
+                "posts",
+                "comments",
+                ""
+              ]
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "Werkzeug/3.1.5 Python/3.14.2"
+            },
+            {
+              "key": "Date",
+              "value": "Wed, 04 Feb 2026 10:17:14 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "WWW-Authenticate",
+              "value": "Token"
+            },
+            {
+              "key": "Vary",
+              "value": "Accept"
+            },
+            {
+              "key": "Allow",
+              "value": "GET, POST, HEAD, OPTIONS"
+            },
+            {
+              "key": "X-Frame-Options",
+              "value": "DENY"
+            },
+            {
+              "key": "Content-Length",
+              "value": "58"
+            },
+            {
+              "key": "Strict-Transport-Security",
+              "value": "max-age=31536000; includeSubDomains; preload"
+            },
+            {
+              "key": "X-Content-Type-Options",
+              "value": "nosniff"
+            },
+            {
+              "key": "Referrer-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Cross-Origin-Opener-Policy",
+              "value": "same-origin"
+            },
+            {
+              "key": "Connection",
+              "value": "close"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"detail\": \"Authentication credentials were not provided.\"\n}"
+        }
+      ]
+    }
+  ]
+}
